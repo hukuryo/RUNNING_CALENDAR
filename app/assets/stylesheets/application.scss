@@ -1,0 +1,54 @@
+/*
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ */
+ 
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+header{
+    text-align: center;
+    background-image: image-url("shot-by-cerqueira-XTKjhfE-Inc-unsplash.jpg");
+    background-size: cover;
+    color: white;
+}
+
+.top-page{
+    text-align: center;
+    background-image: image-url("candra-winata-CYOFvtpOIpU-unsplash.jpg");
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+
+.my-table{
+    width: 80%;
+}
+
+.memory-top{
+    text-align: center;
+}
+
+.today{
+    margin-bottom: 10px;
+}
+
+h1{
+    color: white;
+}
+
+.calendar-page{
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.row{
+    display: flex;
+}
+
+.col-md-8{
+    width: 100%;
+}
