@@ -15,7 +15,7 @@
             <tr>
               <td>
                 <%= link_to blog do %>
-                  <p class="text-dark"><%= blog.title %>km</p>
+                  <p class="text-dark"><%= blog.distance %>km</p>
                 <% end %>
               </td>
               <td><%= blog.start_time.strftime("%m-%d") %></td>
@@ -24,17 +24,17 @@
         </tbody>
       </table>
       <%= form_with(model: @blog, local: true) do |form| %>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">走る距離</label><br>
-          <%= form.number_field :title, class: "form-control" %>㎞
+       <div class="form_group">
+          <span class="input-group-text pb-3">走る距離</span>
+          <%= form.number_field :distance, class: "form-control" %>
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">トレーニング内容</label><br>
-          <%= form.text_area :content, class: "form-control" %>
+        <div class="form_group pt-3">
+          <span class="input-group-text">トレーニング内容変更</span>
+          <%= form.text_area :content, class: "form-control"%>
         </div>
-        <div class="mb-3">
+        <div class="form_group pt-3 pb-3">
           <label for="exampleFormControlTextarea1" class="form-label">日にち</label><br>
-          <%= form.datetime_select :start_time, class: "form-control" %>
+          <%= form.date_select :start_time, use_two_digit_numbers: true, class: "form-control" %>
         </div>
         <div class="submit">
           <%= form.submit "設定", class: "btn btn-primary" %>
@@ -47,7 +47,7 @@
         <% blogs.each do |blog| %>
           <div>
             <%= link_to blog do %>
-              <p class="text-dark"><%= blog.title %>km</p>
+              <p class="text-dark"><%= blog.distance %>km</p>
             <% end %>
           </div>
         <% end %>

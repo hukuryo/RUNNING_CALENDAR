@@ -1,7 +1,7 @@
 class UserController < ApplicationController
     
     def index
-        @blogs = Blog.includes(:user)
+        @blogs = Blog.includes(:user）
     end
     
     private
@@ -9,5 +9,4 @@ class UserController < ApplicationController
     def user_params
         params.require(:user).permit(:name)
     end
-    
 end

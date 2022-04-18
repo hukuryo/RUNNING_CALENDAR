@@ -1,23 +1,41 @@
-<h4 class="pt-3 pb-4 memory-top">今までの運動記録</h4>
-<% @blogs.each do |blog| %>
-    <table class="table my-table align-self-center">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">日付</th>
-          <th scope="col">走った距離</th>
-          <th scope="col">詳細</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"></th>
-          <td><%= blog.start_time.strftime("%m-%d") %></td>
-          <td><%= blog.title %>km</td>
-          <td>
-            <%= link_to "トレーニング内容", blog_path(blog)  %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-<% end %>
+<h4 class="pt-3 pb-4 memory-top">今月の運動記録</h4>
+<table class="table my-table align-self-center">
+  <thead>
+    <tr>
+      <th scope="col"></th></th>
+      <th scope="col"></th>
+      <th scope="col">走った合計の距離</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td></td>
+        <td><%= @total_distance %>km</td>
+        <td></td>
+      </tr>
+    </tbody>
+</table>
+<table class="table my-table align-self-center">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">日付</th>
+      <th scope="col">走った距離</th>
+      <th scope="col">詳細</th>
+    </tr>
+  </thead>
+  <% @blogs.each do |blog| %>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td><%= blog.start_time.strftime("%m-%d") %></td>
+        <td><%= blog.distance %>km</td>
+        <td>
+          <%= link_to "トレーニング内容", blog_path(blog)  %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

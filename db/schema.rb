@@ -13,6 +13,8 @@
 ActiveRecord::Schema.define(version: 2022_03_28_131345) do
 
   create_table "blogs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "distance"
     t.string "title"
     t.text "content"
     t.datetime "start_time"
