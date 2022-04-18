@@ -1,7 +1,8 @@
 class UserController < ApplicationController
     
     def index
-        @blogs = Blog.includes(:user）
+        @blogs = Blog.includes(:user)
+        @total_distance = Blog.all.sum(:distance)
     end
     
     private
