@@ -1,8 +1,8 @@
-<h4 class="pt-3 pb-5 memory-top">カレンダー</h4>
+<h4 class="pt-3 pb-5 memory-top"><i class="far fa-calendar-alt"></i> カレンダー</h4>
 <div class="calendar-page">
   <div class="row">
     <div class="col-md-4">
-    	<h4 class="schedule">今月のノルマ</h4>
+    	<h4 class="schedule"><i class="fas fa-running"></i> 今月のノルマ</h4>
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -23,10 +23,10 @@
           <% end %>
         </tbody>
       </table>
-      <h4 class="pb-3">トレーニング予定入力</h4>
+      <h4 class="pb-3"><i class="far fa-calendar-alt"></i> トレーニング予定入力</h4>
       <%= form_with(model: @blog, local: true) do |form| %>
        <div class="form_group">
-          <span class="input-group-text pb-3">走る距離</span>
+          <span class="input-group-text pb-3">走る距離(km)</span>
           <%= form.number_field :distance, class: "form-control" %>
         </div>
         <div class="form_group pt-3">

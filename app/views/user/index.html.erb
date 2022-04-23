@@ -1,4 +1,4 @@
-<h4 class="pt-3 pb-4 memory-top">今月の運動記録</h4>
+<h4 class="pt-3 pb-4 memory-top"><i class="fas fa-running"></i> 私の運動記録</h4>
 <table class="table my-table align-self-center">
   <thead>
     <tr>
@@ -32,9 +32,7 @@
         <th scope="row"></th>
         <td><%= blog.start_time.strftime("%m-%d") %></td>
         <td><%= blog.distance %>km</td>
-        <td>
-          <%= link_to "トレーニング内容", blog_path(blog)  %>
-        </td>
+        <td><%= link_to "トレーニング内容", blog_path(blog) %></td>
       </tr>
     </tbody>
   <% end %>
