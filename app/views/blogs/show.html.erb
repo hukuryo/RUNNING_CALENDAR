@@ -1,10 +1,9 @@
 <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0" class="show-text">
+  <p><%= @blog.start_time.strftime("%m-%d") %></p>
   <h4 id="item-1">今日の目標</h4>
   <p><%= @blog.distance %>km</p>
   <h4 id="item-1-2">内容</h4>
   <p><%= @blog.content %></p>
-  <h4 id="item-2">日にち</h4>
-  <p><%= @blog.start_time.strftime("%m-%d") %></p>
   <h4 id="item-2"></h4>
   <p><%= link_to '編集', edit_blog_path(@blog), class: "btn btn-success" %>
     <%= link_to '消去',blog_path(@blog.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>

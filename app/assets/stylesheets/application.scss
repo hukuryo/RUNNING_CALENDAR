@@ -60,3 +60,26 @@ h1{
 .col-md-8{
     width: 100%;
 }
+
+.fixed-background {
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+ 
+.background-1 {
+  background-image: url("30daysreplay-social-media-marketing-gAajYgoEci8-unsplash.jpg");
+}
+ 
+.background-2 {
+  background-image: url("braden-collum-9HI8UJMSdZA-unsplash.jpg");
+}
+
+.head{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 102%;
+    justify-content: center;
+}
