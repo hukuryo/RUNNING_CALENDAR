@@ -1,8 +1,14 @@
 class UserController < ApplicationController
     
     def index
-        @blogs = Blog.includes(:user)
-        @total_distance = Blog.all.sum(:distance)
+        @blogs = current_user.blogs
+        @total_distance = @blogs.all.sum(:distance)
+    end
+    
+    def show
+        @user = User.find(params[:id])
+        @blog = Blog.new
+        @blogs = current_user.blogs
     end
     
     private

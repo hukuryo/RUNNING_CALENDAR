@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  
   def index
     @blogs = Blog.all
     @blog = Blog.new
@@ -20,14 +21,17 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    @blog.save!
-    redirect_to blogs_path, notice:"予定を追加しました！"
+    if @blog.save
+      redirect_to user_path(current_user), notice:"予定を追加しました！"
+    else
+      render 'index'
+    end
   end
 
   def destroy
     @blog = Blog.find(params[:id])
     if @blog.destroy
-      redirect_to blogs_path, alert:"削除しました"
+      redirect_to user_path(current_user), alert:"削除しました"
     else
       render 'index'
     end
@@ -36,7 +40,7 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "予定を変更しました!"
+      redirect_to user_path(current_user), notice: "予定を変更しました!"
     else
       render 'edit'
     end

@@ -1,1 +1,54 @@
-<h4>今までの記録</h4>
+<h4 class="pb-3 memory-top"><i class="far fa-calendar-alt"></i> カレンダー</h4>
+<div class="calendar-page ">
+  <div class="row">
+    <div class="col-md-8">
+      <%= month_calendar events: @blogs do |date, blogs| %>
+        <%= date.day %>
+        <% blogs.each do |blog| %>
+          <div>
+            <%= link_to blog do %>
+              <p class="text-dark"><%= blog.distance %>km</p>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h4 class="pb-3"><i class="far fa-calendar-alt"></i> トレーニング予定入力</h4>
+      <%= form_with(model: @blog, local: true) do |form| %>
+       <div class="form_group">
+          <span class="input-group-text pb-3">走る距離(km)</span>
+          <%= form.number_field :distance, class: "form-control" %>
+        </div>
+        <div class="form_group pt-3">
+          <span class="input-group-text">トレーニング内容</span>
+          
+          <%= form.text_area :content, class: "form-control"%>
+        </div>
+        <div class="form_group pt-3 pb-3">
+          <%= form.date_select :start_time, use_two_digit_numbers: true, class: "form-control" %>
+          <%= form.submit "設定", class: "btn btn-primary ml-2" %>
+        </div>
+      <% end %>
+      <h4 class="schedule"><i class="fas fa-running"></i> 今月のノルマ</h4>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>日にち</th>
+            <th>走る距離</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @blogs.each do |blog| %>
+            <tr>
+              <td><%= blog.start_time.strftime("%m月%d日") %></td>
+              <td><p class="text-dark"><%= blog.distance %>km</p></td>
+              <td><%= link_to "トレーニング内容", blog_path(blog) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div><br>
+  </div>
+</div>

@@ -4,43 +4,41 @@
     <title>RunningCalendar</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
- <body class="d-flex flex-column vh-100">
-    <header class="pt-3 pb-2">
-      <%= link_to root_path, class: 'nav-link text-dark' do %>
-        <h1 class="title is-4" style="font-family: Bluesky;">RUNNING CALENDAR</h1>
-      <% end %>
-      <nav class="navbar navbar-light">
-        <div class="head">
-          <div class="justify-content-center">
-            <ul class="nav justify-content-center">
-              <li class="nav-item ml-1"><i class="far fa-calendar-alt"></i> <%= link_to "MYカレンダー", blogs_path, class: 'nav-link text-white' %></li>
-              <li class="nav-item"><i class="fas fa-running"></i> <%= link_to "今までの記録", user_index_path(current_user), class: 'nav-link text-white' %></li>
-              <li class="nav-item"><i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-white' %></li>
-            </ul>
-          </div>
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <h4>RUNNIG CALENDAR</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="nav">
+            <% if user_signed_in? %>
+              <li class="nav-item ml-1"> <%= link_to "MYカレンダー", user_path(current_user), class: 'nav-link text-white' %></li>
+              <li class="nav-item"> <%= link_to "今までの記録", user_index_path(current_user), class: 'nav-link text-white' %></li>
+              <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-white' %></li>
+            <% else %>
+              <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %></li>
+              <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %></li>
+            <% end %>
+          </ul>
         </div>
       </nav>
-      </header>
-        <% if flash[:notice] %>
-          <div class="alert alert-primary mb-0" role="alert">
-            <p class="notice"><%= notice %></p>
-          </div>
-        <% end %>
+    </header>
+    <% if flash[:notice] %>
+      <div class="alert alert-primary mb-0 careful" role="alert">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
 
-        <% if flash[:alert] %>
-          <div class="alert alert-danger mb-0" role="alert">
-            <p class="alert"><%= alert %></p>
-          </div>
-        <% end %>
-      <%= yield %>
-      
-      <footer>
-        
-      </footer>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger mb-0 careful" role="alert">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+    </body>
 </html>
 

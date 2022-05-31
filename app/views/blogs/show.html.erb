@@ -1,12 +1,30 @@
-<div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0" class="show-text">
-  <p><%= @blog.start_time.strftime("%m-%d") %></p>
-  <h4 id="item-1">今日の目標</h4>
-  <p><%= @blog.distance %>km</p>
-  <h4 id="item-1-2">内容</h4>
-  <p><%= @blog.content %></p>
-  <h4 id="item-2"></h4>
-  <p><%= link_to '編集', edit_blog_path(@blog), class: "btn btn-success" %>
-    <%= link_to '消去',blog_path(@blog.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
-    <%= link_to '戻る', blogs_path, class: "btn btn-primary" %>
-  </p>
+<div class="newpost-page">
+  <div class="container">
+    <div class = "row" >
+      <div class="col mb-5">
+        <h3 class = "font-weight-normal mt-5 pt-5 text-center">トレーニング内容</h3>
+      </div>
+    </div>
+    <div class="col-md-4 offset-md-4">
+      <div class="form_group">
+        <span class="input-group-text">ランニング距離</span>
+        <%= @blog.distance %>km
+      </div>
+      <div class="form_group pt-5 pb-3">
+        <span class="input-group-text">トレーニング内容</span>
+        <%= @blog.content %>
+      </div>
+      <div class="form_group">
+        <span class="input-group-text">日付</span>
+        <%= @blog.start_time.strftime("%m月%d日") %>
+      </div>
+      <div class="text-center pt-4">
+        <% if @blog.user == current_user %>
+          <%= link_to '編集', edit_blog_path(@blog), class: "btn btn-success" %>
+        <% end %>
+        <%= link_to '消去',blog_path(@blog.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
 </div>
+  

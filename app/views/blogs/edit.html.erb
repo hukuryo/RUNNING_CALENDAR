@@ -2,7 +2,7 @@
   <div class="container">
     <div class = "row" >
       <div class="col mb-5">
-        <h3 class = "font-weight-normal mt-5 text-center">予定変更</h3>
+        <h3 class = "font-weight-normal text-center edit-top">予定変更</h3>
       </div>
     </div>
     <div class="col-md-4 offset-md-4">
@@ -20,8 +20,7 @@
         </div>
         <div class="text-center pt-4">
           <%= form.submit "変更", class: "btn btn-success" %>
-          <%= link_to '消去', blog_path(@blog.id), method: :delete, data: { confirm: '本当に?' }, class: "btn btn-danger" %>
-          <%= link_to '戻る', blogs_path, class: "btn btn-primary" %>
+          <%= link_to "戻る", blog_path(@blog), class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
